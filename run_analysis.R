@@ -4,7 +4,7 @@ merge_and_analyze <- function()
   activities <- read.table("./UCI HAR Dataset/activity_labels.txt", col.names=c("ActivityId", "ActivityName"))
   features <- read.table("./UCI HAR Dataset/features.txt", col.names=c("FeatureId", "FeatureName"))
   
-  #Load test features
+  #Load test feature observations
   testX <- read.table("./UCI HAR Dataset/test/X_test.txt", col.names = features$FeatureName)
   #Subset test data columns to mean & standard deviation only
   testX <- testX[ , c(grep(".+\\.mean\\.\\.\\..+", names(testX)), grep(".+\\.std\\.\\.\\..+", names(testX)))]
@@ -12,7 +12,7 @@ merge_and_analyze <- function()
   testY <- read.table("./UCI HAR Dataset/test/Y_test.txt", col.names = c("ActivityId"))
   testSubject <- read.table("./UCI HAR Dataset/test/subject_test.txt", col.names = c("Subject"))
   
-  #Load test features
+  #Load train feature observations
   trainX <- read.table("./UCI HAR Dataset/train/X_train.txt", col.names = features$FeatureName)
   #Subset train data columns to mean & standard deviation only
   trainX <- trainX[ , c(grep(".+\\.mean\\.\\.\\..+", names(trainX)), grep(".+\\.std\\.\\.\\..+", names(trainX)))]
